@@ -1,0 +1,29 @@
+version: '2.0'
+services:
+  practice_db:
+    image: mysql:5.7.17
+    environment:
+     - MYSQL_ROOT_PASSWORD=bigdata
+     - MYSQL_DATABASE=practice
+     - MYSQL_USER=healsci
+     - MYSQL_PASSWORD=bigdata
+     - LANG=C.UTF-8
+    volumes:
+     - ./db/mysql_simulated_data:/var/lib/mysql
+     - ./db/mysql_config:/etc/mysql/conf.d
+     - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+  superset:
+    image: hs-superset:0.17.4
+    environment:
+      - LANG=C.UTF-8
+      - PYTHONPATH=/root/.superset/
+    volumes:
+     - ./src:/src
+     - ./config:/root/.superset/
+    command: bash -c "superset runserver"
+    ports:
+      - "8088:8088"
+    depends_on:
+     - practice_db
