@@ -92,3 +92,5 @@ ENV/
 *.xlsx
 *.ipynb_checkpoint*
 db/*
+
+config/superset.db
