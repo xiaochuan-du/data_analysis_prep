@@ -18,7 +18,7 @@ SECRET_KEY = 'hello_world'
 # superset metadata (slices, connections, tables, dashboards, ...).
 # Note that the connection information to connect to the datasources
 # you want to explore are managed directly in the web UI
-SQLALCHEMY_DATABASE_URI = 'sqlite:////root/.superset/superset.db'
+SQLALCHEMY_DATABASE_URI = 'mysql://healsci:bigdata@superset_setting_db/superset_setting?charset=utf8'
 
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True

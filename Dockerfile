@@ -7,6 +7,5 @@ RUN mkdir ~/.pip
 COPY pip.conf ~/.pip/pip.conf
 COPY requirements.txt .
 RUN ["pip","install","-r","requirements.txt"]
-WORKDIR ${DIR}
 LABEL version="1.0" \
       description="This image is used to set up sever."
